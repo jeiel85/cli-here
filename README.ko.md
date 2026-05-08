@@ -6,7 +6,7 @@
 
 ## 상태
 
-현재 이 프로젝트는 MVP 설계 단계입니다.
+현재 MVP 구현 베이스가 완료되었고 릴리즈 품질 보강을 진행 중입니다.
 
 ---
 
@@ -36,21 +36,21 @@ Windows 탐색기에 다음과 같은 우클릭 메뉴를 추가합니다.
 
 ---
 
-## MVP 예정 기능
+## MVP 구현 상태
 
-- WPF 설정 UI
-- 한국어/영어 UI
-- System/Korean/English 언어 모드
-- PATH 기반 CLI 설치 감지
-- 우클릭 메뉴 추가/해제
-- 폴더 빈 공간 우클릭 지원
-- 폴더 자체 우클릭 지원
-- PowerShell 실행
-- Windows Terminal 실행
-- 선택적 관리자 권한 실행
-- `%APPDATA%\CliHere\settings.json` 설정 저장
-- GitHub Actions 빌드/테스트
-- ZIP 릴리즈 산출물
+- [x] WPF 설정 UI
+- [x] 한국어/영어 UI
+- [x] System/Korean/English 언어 모드
+- [x] PATH 기반 CLI 설치 감지
+- [x] 우클릭 메뉴 추가/해제
+- [x] 폴더 빈 공간 우클릭 지원
+- [x] 폴더 자체 우클릭 지원
+- [x] PowerShell 실행
+- [x] Windows Terminal 실행
+- [x] 선택적 관리자 권한 실행
+- [x] `%APPDATA%\\CliHere\\settings.json` 설정 저장
+- [x] GitHub Actions 빌드/테스트
+- [x] ZIP 릴리즈 산출물
 
 ---
 
@@ -118,3 +118,4 @@ dotnet test --configuration Release
 ## 라이선스
 
 MIT
+

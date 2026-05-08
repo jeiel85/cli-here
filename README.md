@@ -10,7 +10,7 @@ Korean name: **CLI 여기서 열기**
 
 ## Status
 
-This project is in the MVP planning stage.
+This project has an MVP implementation baseline and is actively being hardened for release.
 
 ---
 
@@ -40,21 +40,21 @@ CLI Here does not install these CLIs automatically. It only detects whether they
 
 ---
 
-## Planned MVP features
+## MVP implementation status
 
-- WPF settings UI
-- Korean and English UI
-- System/Korean/English language mode
-- CLI installation detection from PATH
-- Context menu add/remove
-- Folder background right-click support
-- Folder right-click support
-- PowerShell launch mode
-- Windows Terminal launch mode
-- Optional administrator launch mode
-- JSON settings under `%APPDATA%\CliHere\settings.json`
-- GitHub Actions build/test workflow
-- ZIP release asset
+- [x] WPF settings UI
+- [x] Korean and English UI
+- [x] System/Korean/English language mode
+- [x] CLI installation detection from PATH
+- [x] Context menu add/remove
+- [x] Folder background right-click support
+- [x] Folder right-click support
+- [x] PowerShell launch mode
+- [x] Windows Terminal launch mode
+- [x] Optional administrator launch mode
+- [x] JSON settings under `%APPDATA%\\CliHere\\settings.json`
+- [x] GitHub Actions build/test workflow
+- [x] ZIP release asset
 
 ---
 
@@ -133,3 +133,4 @@ dotnet test --configuration Release
 ## License
 
 MIT
+

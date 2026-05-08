@@ -41,3 +41,9 @@ Reason: Normal usage should stay non-admin, while users who need elevated CLI se
 Decision: The release workflow must produce `CliHere-win-x64.zip`.
 
 Reason: Public users need an actual downloadable Windows artifact, not only source code.
+
+## 0008. Keep launcher and UI in a single executable for MVP
+
+Decision: `CliHere.exe` handles both settings UI and launcher mode (`run`) through startup argument parsing.
+
+Reason: This matches architecture spec while keeping deployment and registry command composition simple.
