@@ -60,3 +60,5 @@ Initial MVP implementation baseline completed.
 
 - Refreshed GitHub README.md with a top-repo style layout (badges, highlights, install path, roadmap snapshot)
 
+- Switched root README default language to Korean and added cross-language links (README.md ↔ README.en.md)
+

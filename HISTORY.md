@@ -249,3 +249,16 @@
   - Markdown 구조/링크 점검
 - 결과: 성공
 
+
+- 작업: README 기본 언어를 한국어로 전환 및 언어 링크 추가
+- 변경 파일:
+  - README.md
+  - README.en.md
+  - README.ko.md
+  - .agent/progress.md
+  - HISTORY.md
+  - CHANGELOG.md
+- 검증:
+  - Markdown 링크/구조 확인
+- 결과: 성공
+
