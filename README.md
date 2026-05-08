@@ -116,7 +116,7 @@ Recommended stack:
 
 - C#
 - WPF
-- .NET 10 LTS
+- .NET 9
 - xUnit
 - GitHub Actions
 
@@ -133,4 +133,5 @@ dotnet test --configuration Release
 ## License
 
 MIT
+
 
