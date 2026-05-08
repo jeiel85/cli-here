@@ -67,3 +67,5 @@ Initial MVP implementation baseline completed.
 - Fixed oversized publish path by switching scripts/publish.ps1 to framework-dependent single-file mode
 - Added no-symbol publish flags for release/publish script to keep artifacts lean
 
+- Prepared v0.1.2 re-release after artifact size optimization fixes
+

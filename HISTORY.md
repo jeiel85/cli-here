@@ -290,3 +290,15 @@
   - dotnet test --configuration Release
 - 결과: 성공
 
+
+- 작업: v0.1.2 재배포 준비 (용량 최적화 반영)
+- 변경 파일:
+  - src/CliHere.App/CliHere.App.csproj
+  - CHANGELOG.md
+  - .agent/progress.md
+  - HISTORY.md
+- 검증:
+  - dotnet build --configuration Release
+  - dotnet test --configuration Release
+- 결과: 성공
+

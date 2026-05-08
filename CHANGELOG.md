@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.1.2 - 2026-05-08
+
+### Changed
+
+- Fixed oversized artifact path by aligning local `scripts/publish.ps1` with framework-dependent release mode.
+- Added symbol-stripping publish flags in release/publish pipeline (`DebugType=None`, `DebugSymbols=false`) to keep artifacts lean.
+- Refined README language flow and added GitHub Pages branding entrypoint.
+
+### Verification
+
+- `./scripts/publish.ps1` passed.
+- `dist/CliHere/CliHere.exe` size verified: 244,878 bytes.
+- `dist/CliHere-win-x64.zip` size verified: 111,531 bytes.
+- `dotnet build --configuration Release` passed.
+- `dotnet test --configuration Release` passed.
 ## v0.1.1 - 2026-05-08
 
 ### Added`n`n- Added a responsive GitHub Pages branding landing page (`docs/index.html`).`n
@@ -62,6 +77,7 @@
 - `dotnet publish src/CliHere.App/CliHere.App.csproj --configuration Release --runtime win-x64 --self-contained true -p:PublishSingleFile=true -o dist/CliHere` passed.
 - Local zip `dist/CliHere-win-x64.zip` generated (size > 0).
 - Published exe startup verified locally.
+
 
 
 
