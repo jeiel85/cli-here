@@ -98,3 +98,19 @@
   - Publish exe 실행 확인
 - 결과: 성공
 
+
+- 작업: 배포 정합성 보강 (출력 exe 명/CI SDK 버전 정렬)
+- 변경 파일:
+  - src/CliHere.App/CliHere.App.csproj
+  - .github/workflows/build.yml
+  - .github/workflows/release.yml
+  - .agent/progress.md
+  - HISTORY.md
+  - CHANGELOG.md
+- 검증:
+  - dotnet build --configuration Release
+  - dotnet test --configuration Release (10 tests)
+  - dotnet publish ... win-x64 self-contained single-file
+  - dist/CliHere/CliHere.exe 실행 확인
+- 결과: 성공
+

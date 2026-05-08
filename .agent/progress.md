@@ -36,3 +36,6 @@ Initial MVP implementation baseline completed.
 - Added selectable CLI enable flags with persisted settings (EnabledCliIds)
 - Verified local publish output and zip packaging (dist/CliHere-win-x64.zip)
 
+- Aligned app output name to CliHere.exe (from project assembly output)
+- Aligned GitHub Actions SDK setup to .NET 9.x for build/release workflows
+
