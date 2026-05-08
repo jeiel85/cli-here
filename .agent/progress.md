@@ -39,3 +39,5 @@ Initial MVP implementation baseline completed.
 - Aligned app output name to CliHere.exe (from project assembly output)
 - Aligned GitHub Actions SDK setup to .NET 9.x for build/release workflows
 
+- Added brand identity app icon asset (folder + terminal motif) and wired it to app/window icon settings
+

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:models="clr-namespace:CliHere.App.Models"
         mc:Ignorable="d"
+        Icon="Assets/AppIcon.ico"
         Title="{Binding AppTitle}" Height="420" Width="720">
     <Grid Margin="16">
         <Grid.RowDefinitions>

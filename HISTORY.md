@@ -114,3 +114,18 @@
   - dist/CliHere/CliHere.exe 실행 확인
 - 결과: 성공
 
+
+- 작업: 앱 아이콘 브랜딩 반영
+- 변경 파일:
+  - src/CliHere.App/Assets/AppIcon.ico
+  - src/CliHere.App/Assets/AppIcon.png
+  - src/CliHere.App/CliHere.App.csproj
+  - src/CliHere.App/MainWindow.xaml
+  - .agent/progress.md
+  - HISTORY.md
+  - CHANGELOG.md
+- 검증:
+  - dotnet build --configuration Release
+  - dotnet test --configuration Release
+- 결과: 성공
+
