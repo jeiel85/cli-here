@@ -15,7 +15,7 @@
 - Korean/English localization resources under `src/CliHere.App/Resources/Languages`.
 - Unit tests for settings, CLI definitions, terminal launch argument safety, launcher validation, and registry ownership rules.
 
-### Changed`n`n- Added a brand identity app icon (folder + terminal motif) and applied it to the executable/window icon settings.`n`n`n- Aligned output executable naming to `CliHere.exe` by setting assembly output name.`n- Aligned build/release workflow SDK setup to `.NET 9.x` for target-framework consistency.`n
+### Changed`n`n- Grouped context menu entries under a single `CLI Here` parent submenu for cleaner Explorer menus.`n`n`n- Added a brand identity app icon (folder + terminal motif) and applied it to the executable/window icon settings.`n`n`n- Aligned output executable naming to `CliHere.exe` by setting assembly output name.`n- Aligned build/release workflow SDK setup to `.NET 9.x` for target-framework consistency.`n
 
 - Settings UI labels now bind to localization keys instead of hard-coded text.
 - Added per-CLI enable selection and persisted selected IDs through `EnabledCliIds`.
@@ -38,5 +38,6 @@
 - `dotnet publish src/CliHere.App/CliHere.App.csproj --configuration Release --runtime win-x64 --self-contained true -p:PublishSingleFile=true -o dist/CliHere` passed.
 - Local zip `dist/CliHere-win-x64.zip` generated (size > 0).
 - Published exe startup verified locally.
+
 
 

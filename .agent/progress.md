@@ -41,3 +41,5 @@ Initial MVP implementation baseline completed.
 
 - Added brand identity app icon asset (folder + terminal motif) and wired it to app/window icon settings
 
+- Implemented parent context menu grouping so CLI entries appear under a single CLI Here submenu
+

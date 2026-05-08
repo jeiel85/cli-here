@@ -26,10 +26,11 @@
 ## Follow-up
 
 - [x] Localize all UI labels via binding/resource key (remove temporary hard-coded labels)
-- [ ] Add parent context menu group
+- [x] Add parent context menu group
 - [ ] Add custom CLI definitions
 - [ ] Add PowerShell 7 support
 - [ ] Add repair context menu action
 - [ ] Research Windows 11 native context menu integration
+
 
 

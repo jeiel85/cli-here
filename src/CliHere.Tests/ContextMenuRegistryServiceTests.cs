@@ -15,6 +15,7 @@ public sealed class ContextMenuRegistryServiceTests
     public void IsOwnedKey_ReturnsTrueOnlyForOwnedPrefix()
     {
         Assert.True(ContextMenuRegistryService.IsOwnedKey("CliHere_gemini"));
+        Assert.True(ContextMenuRegistryService.IsOwnedKey(ContextMenuRegistryService.ParentGroupKey));
         Assert.False(ContextMenuRegistryService.IsOwnedKey("OtherApp_gemini"));
     }
 

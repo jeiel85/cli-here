@@ -129,3 +129,18 @@
   - dotnet test --configuration Release
 - 결과: 성공
 
+
+- 작업: 상위 컨텍스트 메뉴 그룹 구현
+- 변경 파일:
+  - src/CliHere.App/Services/ContextMenuRegistryService.cs
+  - src/CliHere.App/ViewModels/MainViewModel.cs
+  - src/CliHere.Tests/ContextMenuRegistryServiceTests.cs
+  - .agent/tasks.md
+  - .agent/progress.md
+  - HISTORY.md
+  - CHANGELOG.md
+- 검증:
+  - dotnet build --configuration Release
+  - dotnet test --configuration Release
+- 결과: 성공
+

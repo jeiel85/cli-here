@@ -6,13 +6,14 @@ namespace CliHere.App.Services;
 public sealed class ContextMenuRegistryService
 {
     internal const string Prefix = "CliHere_";
+    internal const string ParentGroupKey = $"{Prefix}Group";
     internal const string BackgroundPath = @"Software\Classes\Directory\Background\shell";
     internal const string FolderPath = @"Software\Classes\Directory\shell";
 
-    public void RegisterCli(CliDefinition cliDefinition, string menuLabel, string appExecutablePath)
+    public void RegisterCli(CliDefinition cliDefinition, string parentMenuLabel, string menuLabel, string appExecutablePath)
     {
-        RegisterForPath(BackgroundPath, cliDefinition.Id, menuLabel, appExecutablePath, "%V");
-        RegisterForPath(FolderPath, cliDefinition.Id, menuLabel, appExecutablePath, "%1");
+        RegisterForPath(BackgroundPath, cliDefinition.Id, parentMenuLabel, menuLabel, appExecutablePath, "%V");
+        RegisterForPath(FolderPath, cliDefinition.Id, parentMenuLabel, menuLabel, appExecutablePath, "%1");
     }
 
     public void RemoveAll()
@@ -21,11 +22,15 @@ public sealed class ContextMenuRegistryService
         RemoveOwnedKeys(FolderPath);
     }
 
-    private static void RegisterForPath(string basePath, string cliId, string menuLabel, string executablePath, string argumentToken)
+    private static void RegisterForPath(string basePath, string cliId, string parentMenuLabel, string menuLabel, string executablePath, string argumentToken)
     {
         using RegistryKey baseKey = Registry.CurrentUser.CreateSubKey(basePath) ?? throw new InvalidOperationException("Unable to create registry path.");
+        using RegistryKey parentKey = baseKey.CreateSubKey(ParentGroupKey) ?? throw new InvalidOperationException("Unable to create parent command key.");
+        parentKey.SetValue("MUIVerb", parentMenuLabel, RegistryValueKind.String);
+
+        using RegistryKey shellKey = parentKey.CreateSubKey("shell") ?? throw new InvalidOperationException("Unable to create shell key.");
         string keyName = BuildOwnedKeyName(cliId);
-        using RegistryKey commandOwner = baseKey.CreateSubKey(keyName) ?? throw new InvalidOperationException("Unable to create command owner key.");
+        using RegistryKey commandOwner = shellKey.CreateSubKey(keyName) ?? throw new InvalidOperationException("Unable to create command owner key.");
         commandOwner.SetValue(string.Empty, menuLabel, RegistryValueKind.String);
 
         using RegistryKey commandKey = commandOwner.CreateSubKey("command") ?? throw new InvalidOperationException("Unable to create command key.");

@@ -119,8 +119,9 @@ public sealed class MainViewModel : INotifyPropertyChanged
 
         foreach (CliItemViewModel cliItem in CliItems.Where(x => x.IsEnabled))
         {
+            string parentMenuLabel = AppTitle;
             string label = _localizationService.Translate("ContextMenu.OpenWith", Language, cliItem.DisplayName);
-            _contextMenuRegistryService.RegisterCli(cliItem.Definition, label, appPath);
+            _contextMenuRegistryService.RegisterCli(cliItem.Definition, parentMenuLabel, label, appPath);
         }
 
         _settingsService.Save(_settings);
