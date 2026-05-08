@@ -119,6 +119,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
     public string InstalledStatusLabel => T("Cli.Status.Installed");
     public string NotInstalledStatusLabel => T("Cli.Status.NotInstalled");
 
+    public LocalizationService LocalizationService => _localizationService;
+
     public LanguageMode Language
     {
         get => _settings.Language;
@@ -217,19 +219,82 @@ public sealed class MainViewModel : INotifyPropertyChanged
                 DocsUrl = x.Definition.DocsUrl,
             })
             .ToList();
-        ApplyContextMenuRegistrations();
+        // Persist settings before elevation so the admin child reads the latest selections.
         _settingsService.Save(_settings);
-        MessageBox.Show(_localizationService.Translate("Message.Applied", Language));
+
+        if (!RunContextMenuAction(App.ApplyContextArg))
+        {
+            return;
+        }
+
+        ThemedMessageBox.Show(_localizationService.Translate("Message.Applied", Language), AppTitle, MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     private void Repair()
     {
-        ApplyContextMenuRegistrations();
         _settingsService.Save(_settings);
-        MessageBox.Show(_localizationService.Translate("Message.Repaired", Language));
+
+        if (!RunContextMenuAction(App.ApplyContextArg))
+        {
+            return;
+        }
+
+        ThemedMessageBox.Show(_localizationService.Translate("Message.Repaired", Language), AppTitle, MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
-    private void ApplyContextMenuRegistrations()
+    private void RemoveAll()
+    {
+        if (!RunContextMenuAction(App.RemoveContextArg))
+        {
+            return;
+        }
+
+        ThemedMessageBox.Show(_localizationService.Translate("Message.Removed", Language), AppTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+    }
+
+    /// <summary>
+    /// Runs the requested registry action either inline (when the current process is already
+    /// elevated) or by relaunching this executable elevated. Win11 25H2 stopped honoring HKCU
+    /// shell entries, so the actual write must happen under HKLM, which requires admin rights.
+    /// Shows an error dialog and returns false on failure or UAC decline.
+    /// </summary>
+    private bool RunContextMenuAction(string mode)
+    {
+        try
+        {
+            if (ElevationHelper.IsCurrentProcessElevated())
+            {
+                if (string.Equals(mode, App.ApplyContextArg, StringComparison.OrdinalIgnoreCase))
+                {
+                    ApplyContextMenuRegistrationsInline();
+                }
+                else
+                {
+                    _contextMenuRegistryService.RemoveAll();
+                }
+                return true;
+            }
+
+            int exitCode = ElevationHelper.RunElevatedAndWait(mode);
+            if (exitCode == 0)
+            {
+                return true;
+            }
+
+            string detail = exitCode == -1
+                ? _localizationService.Translate("ContextMenu.Error.Cancelled", Language)
+                : _localizationService.Translate("ContextMenu.Error.Failed", Language);
+            ThemedMessageBox.Show(detail, AppTitle, MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
+        }
+        catch (Exception ex)
+        {
+            ThemedMessageBox.Show(ex.Message, AppTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
+        }
+    }
+
+    private void ApplyContextMenuRegistrationsInline()
     {
         string appPath = Environment.ProcessPath ?? throw new InvalidOperationException("Cannot resolve executable path.");
         _contextMenuRegistryService.RemoveAll();
@@ -239,12 +304,6 @@ public sealed class MainViewModel : INotifyPropertyChanged
             string label = _localizationService.Translate("ContextMenu.OpenWith", Language, cliItem.DisplayName);
             _contextMenuRegistryService.RegisterCli(cliItem.Definition, parentMenuLabel, label, appPath);
         }
-    }
-
-    private void RemoveAll()
-    {
-        _contextMenuRegistryService.RemoveAll();
-        MessageBox.Show(_localizationService.Translate("Message.Removed", Language));
     }
 
     private void RefreshDetectionStatus()
@@ -266,7 +325,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
     {
         if (string.IsNullOrWhiteSpace(NewCliDisplayName) || string.IsNullOrWhiteSpace(NewCliExecutableName))
         {
-            MessageBox.Show(T("CustomCli.Error.Required"), AppTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+            ThemedMessageBox.Show(T("CustomCli.Error.Required"), AppTitle, MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
@@ -354,7 +413,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
                     UpdateCheckErrorKind.ApiError => string.Format(T("Update.Error.Api"), ex.StatusCode ?? 0),
                     _ => T("Update.Error.Unknown"),
                 };
-                MessageBox.Show(message, T("Update.DialogTitle"), MessageBoxButton.OK, MessageBoxImage.Information);
+                ThemedMessageBox.Show(message, T("Update.DialogTitle"), MessageBoxButton.OK, MessageBoxImage.Information);
             });
 
             UpdateCheckLabel = string.Empty;

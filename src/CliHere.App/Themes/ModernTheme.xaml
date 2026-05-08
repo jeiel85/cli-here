@@ -2,26 +2,26 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <!-- ====== Color tokens (참고 앱과 동일 팔레트) ====== -->
-    <Color x:Key="BgTopColor">#FF0F1117</Color>
-    <Color x:Key="BgBottomColor">#FF121621</Color>
-    <Color x:Key="CardColor">#FF1A1D2E</Color>
-    <Color x:Key="CardBorderColor">#FF2D2F45</Color>
-    <Color x:Key="HeaderBgColor">#FF1A1D2E</Color>
-    <Color x:Key="FooterBgColor">#FF141622</Color>
-    <Color x:Key="FieldColor">#FF161A27</Color>
-    <Color x:Key="SurfaceAltColor">#FF202439</Color>
-    <Color x:Key="HoverBorderColor">#FF5A5F7A</Color>
-    <Color x:Key="MutedColor">#FF3D4266</Color>
+    <!-- ====== Color tokens (Blue theme: slate-navy base + Tailwind blue accent) ====== -->
+    <Color x:Key="BgTopColor">#FF0B1426</Color>
+    <Color x:Key="BgBottomColor">#FF0E1A30</Color>
+    <Color x:Key="CardColor">#FF15243F</Color>
+    <Color x:Key="CardBorderColor">#FF1F3457</Color>
+    <Color x:Key="HeaderBgColor">#FF13223C</Color>
+    <Color x:Key="FooterBgColor">#FF0F1B33</Color>
+    <Color x:Key="FieldColor">#FF111E36</Color>
+    <Color x:Key="SurfaceAltColor">#FF1A2B4A</Color>
+    <Color x:Key="HoverBorderColor">#FF3B5A8A</Color>
+    <Color x:Key="MutedColor">#FF2A3A5C</Color>
 
-    <Color x:Key="TextPrimaryColor">#FFF1F5F9</Color>
-    <Color x:Key="TextSecondaryColor">#FF8B92B3</Color>
-    <Color x:Key="TextTertiaryColor">#FFC4C9E0</Color>
-    <Color x:Key="TextMutedColor">#FF5A5F7A</Color>
+    <Color x:Key="TextPrimaryColor">#FFE6EEFB</Color>
+    <Color x:Key="TextSecondaryColor">#FF8FA3C4</Color>
+    <Color x:Key="TextTertiaryColor">#FFC2D2EC</Color>
+    <Color x:Key="TextMutedColor">#FF5A6B8C</Color>
 
-    <Color x:Key="AccentColor">#FF8B5CF6</Color>
-    <Color x:Key="AccentHoverColor">#FFA78BFA</Color>
-    <Color x:Key="AccentLightColor">#FFC4B5FD</Color>
+    <Color x:Key="AccentColor">#FF3B82F6</Color>
+    <Color x:Key="AccentHoverColor">#FF60A5FA</Color>
+    <Color x:Key="AccentLightColor">#FF93C5FD</Color>
     <Color x:Key="DangerColor">#FFEF4444</Color>
     <Color x:Key="DangerHoverColor">#FFF87171</Color>
     <Color x:Key="WarningColor">#FFF59E0B</Color>
@@ -56,8 +56,8 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="AccentGradientBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#FF8B5CF6" />
-        <GradientStop Offset="1" Color="#FF6366F1" />
+        <GradientStop Offset="0" Color="#FF2563EB" />
+        <GradientStop Offset="1" Color="#FF0EA5E9" />
     </LinearGradientBrush>
 
     <!-- ====== Window default ====== -->
@@ -570,7 +570,7 @@
                             <Setter TargetName="ItemRoot" Property="Background" Value="{StaticResource SurfaceAltBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="ItemRoot" Property="Background" Value="#332D2F45" />
+                            <Setter TargetName="ItemRoot" Property="Background" Value="#332563EB" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

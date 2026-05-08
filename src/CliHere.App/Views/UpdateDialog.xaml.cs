@@ -123,7 +123,7 @@ public partial class UpdateDialog : Window
         {
             ActionPanel.Visibility = Visibility.Visible;
             ProgressPanel.Visibility = Visibility.Collapsed;
-            MessageBox.Show(message, _errorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+            ThemedMessageBox.Show(message, _errorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
         });
     }
 

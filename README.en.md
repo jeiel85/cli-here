@@ -12,6 +12,10 @@
   <a href="https://github.com/jeiel85/cli-here/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/jeiel85/cli-here?style=social"></a>
 </p>
 
+<p align="center">
+  <img alt="CLI Here main window" src="docs/images/app-main.png" width="900">
+</p>
+
 ---
 
 ## Why CLI Here?
@@ -28,9 +32,10 @@ CLI Here removes those steps by adding Explorer context menu actions that open y
 
 ## Highlights
 
-- Context menu integration for both:
+- Context menu integration in three contexts:
   - Folder right-click
   - Folder background right-click
+  - Desktop background right-click
 - Built-in CLIs:
   - Gemini CLI
   - OpenCode
@@ -42,9 +47,11 @@ CLI Here removes those steps by adding Explorer context menu actions that open y
   - PowerShell
   - PowerShell 7 (`pwsh`, fallback-aware)
 - Optional administrator launch (`runas` + UAC)
-- Explorer menu grouping under a single `CLI Here` parent menu
-- One-click registry repair action
+- Explorer menu grouping under a single `CLI Here` cascade parent
+- One-click Repair / Remove-all registry actions
 - GitHub Releases-based auto-update baseline
+- Robust CLI detection: process PATH + registry PATH (HKCU/HKLM) + well-known fallback folders (npm, `.local/bin`, `.cargo/bin`, `.dotnet/tools`, etc.)
+- Blue dark theme with a fully themed in-app message dialog
 
 ---
 
@@ -88,18 +95,31 @@ CLI Here does **not** auto-install third-party CLIs. It only detects availabilit
 - No analytics SDKs
 - No background network scanning of projects
 - No project file upload
-- Registry scope limited to `HKCU\Software\Classes`
-- Only `CliHere_` owned keys are removed/updated
+- Registry scope limited to `HKLM\SOFTWARE\Classes`
+- Only `CliHere_`-prefixed keys are touched (never modifies other apps' menu entries)
 
 ---
 
-## Windows 11 Note
+## Apply requires UAC
 
-This MVP uses classic registry-based context menu integration.
+Clicking **Apply / Repair / Remove all** triggers a **one-time UAC prompt**.
 
-On Windows 11, entries may appear under:
+- Starting with Windows 11 25H2, the shell stopped honoring per-user (HKCU) context menu entries (Microsoft tightened shell security). The integration must therefore live in the system hive (HKLM).
+- The app spawns a short-lived elevated child process that performs only the registry update and exits — the main window keeps running unprivileged.
+- Declining UAC is safe; the app shows a friendly message and continues.
 
-- `Show more options`
+---
+
+## How to find the menu on Windows 11
+
+The Windows 11 **new (default) right-click menu hides classic registry entries by design**. Use either of:
+
+1. `Shift` + right-click → classic menu opens immediately
+2. Right-click → click `Show more options` at the bottom
+
+Hover `CLI Here` in the classic menu to expand the cascade with all four CLIs.
+
+> Windows 10 classic menu users will see the entry without any extra step.
 
 ---
 
@@ -134,10 +154,14 @@ dotnet test --configuration Release
 
 - [x] MVP foundation + context menu + launcher modes
 - [x] Custom CLI definitions
-- [x] Repair action
+- [x] Repair / Remove-all actions
 - [x] PowerShell 7 mode
+- [x] Blue dark theme + themed in-app message dialog
+- [x] HKLM registration with one-time UAC elevation (Win11 25H2 compatible)
+- [x] Robust CLI detection (registry PATH + well-known folder fallbacks)
+- [x] Desktop-background context support
 - [~] Auto-update hardening and rollout validation
-- [ ] Windows 11 native top-level context menu research
+- [ ] Windows 11 *new* right-click menu (`IExplorerCommand` COM DLL / MSIX Sparse Package — separate effort)
 
 ---
 

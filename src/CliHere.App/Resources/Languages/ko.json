@@ -1,5 +1,11 @@
 {
   "App.Title": "CLI 여기서 열기",
+  "Common.OK": "확인",
+  "Common.Cancel": "취소",
+  "Common.Yes": "예",
+  "Common.No": "아니오",
+  "ContextMenu.Error.Cancelled": "관리자 권한 요청이 취소되어 우클릭 메뉴를 변경하지 못했습니다. Windows의 보안 정책상 시스템 컨텍스트 메뉴는 관리자 권한이 필요합니다.",
+  "ContextMenu.Error.Failed": "우클릭 메뉴를 적용하는 중에 오류가 발생했습니다.",
   "Settings.Language": "언어",
   "Settings.Terminal": "터미널",
   "Settings.RunAsAdministrator": "관리자 권한으로 터미널 실행",

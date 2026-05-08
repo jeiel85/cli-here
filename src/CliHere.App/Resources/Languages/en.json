@@ -1,5 +1,11 @@
 {
   "App.Title": "CLI Here",
+  "Common.OK": "OK",
+  "Common.Cancel": "Cancel",
+  "Common.Yes": "Yes",
+  "Common.No": "No",
+  "ContextMenu.Error.Cancelled": "Couldn't update the right-click menu — administrator approval was cancelled. Windows requires admin rights to change the system context menu.",
+  "ContextMenu.Error.Failed": "Something went wrong while applying the right-click menu.",
   "Settings.Language": "Language",
   "Settings.Terminal": "Terminal",
   "Settings.RunAsAdministrator": "Run terminal as administrator",

@@ -68,13 +68,11 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                        <Border Width="22" Height="22" CornerRadius="6"
-                                Background="{StaticResource AccentGradientBrush}"
-                                Margin="0,0,10,0">
-                            <TextBlock Text="C" Foreground="White" FontWeight="Bold"
-                                       FontSize="12" HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" />
-                        </Border>
+                        <Image Width="22" Height="22"
+                               Source="pack://application:,,,/Assets/AppIcon.png"
+                               RenderOptions.BitmapScalingMode="Fant"
+                               UseLayoutRounding="True"
+                               Margin="0,0,10,0" />
                         <TextBlock Text="{Binding AppTitle}"
                                    Foreground="{StaticResource TextPrimaryBrush}"
                                    FontSize="13" FontWeight="SemiBold"
@@ -243,7 +241,13 @@
                         <StackPanel>
                             <TextBlock Style="{StaticResource SectionLabelStyle}"
                                        Text="{Binding SupportedCliLabel}" />
-                            <ListView ItemsSource="{Binding CliItems}" Height="320">
+                            <ListView ItemsSource="{Binding CliItems}"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      Padding="0"
+                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      ScrollViewer.CanContentScroll="False">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="{Binding DataContext.CliColumnIdLabel, RelativeSource={RelativeSource AncestorType=ListView}}"
@@ -265,11 +269,11 @@
                                                 <DataTemplate>
                                                     <Border CornerRadius="10" Padding="8,3" HorizontalAlignment="Left"
                                                             Background="{StaticResource SurfaceAltBrush}">
-                                                        <TextBlock FontSize="11" FontWeight="SemiBold"
-                                                                   Foreground="{StaticResource TextSecondaryBrush}"
-                                                                   Text="{Binding DataContext.NotInstalledStatusLabel, RelativeSource={RelativeSource AncestorType=ListView}}">
+                                                        <TextBlock FontSize="11" FontWeight="SemiBold">
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
+                                                                    <Setter Property="Text" Value="{Binding DataContext.NotInstalledStatusLabel, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                                                                    <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}" />
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding IsInstalled}" Value="True">
                                                                             <Setter Property="Text" Value="{Binding DataContext.InstalledStatusLabel, RelativeSource={RelativeSource AncestorType=ListView}}" />

@@ -10,11 +10,11 @@
         ShowInTaskbar="True">
 
     <Window.Resources>
-        <SolidColorBrush x:Key="BgBrush" Color="#0F1117"/>
-        <SolidColorBrush x:Key="BorderBrush" Color="#2D2F45"/>
+        <SolidColorBrush x:Key="BgBrush" Color="#0B1426"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#1F3457"/>
         <SolidColorBrush x:Key="AccentBrush" Color="#3B82F6"/>
-        <SolidColorBrush x:Key="TextPrimary" Color="#F1F5F9"/>
-        <SolidColorBrush x:Key="TextSecondary" Color="#8B92B3"/>
+        <SolidColorBrush x:Key="TextPrimary" Color="#E6EEFB"/>
+        <SolidColorBrush x:Key="TextSecondary" Color="#8FA3C4"/>
     </Window.Resources>
 
     <Border Margin="15">
@@ -32,7 +32,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Background="#1A1D2E" CornerRadius="16,16,0,0" Padding="20,15">
+                <Border Grid.Row="0" Background="#13223C" CornerRadius="16,16,0,0" Padding="20,15">
                     <Grid>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Update" FontSize="15" Foreground="{StaticResource AccentBrush}" Margin="0,0,12,0" VerticalAlignment="Center"/>
@@ -49,12 +49,12 @@
                                         <Setter.Value>
                                             <ControlTemplate TargetType="Button">
                                                 <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="6" Width="28" Height="28">
-                                                    <TextBlock Text="✕" Foreground="#8B92B3" FontSize="12"
+                                                    <TextBlock Text="✕" Foreground="#8FA3C4" FontSize="12"
                                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 </Border>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter TargetName="Bd" Property="Background" Value="#2D2F45"/>
+                                                        <Setter TargetName="Bd" Property="Background" Value="#1F3457"/>
                                                     </Trigger>
                                                 </ControlTemplate.Triggers>
                                             </ControlTemplate>
@@ -72,7 +72,7 @@
                                  Foreground="{StaticResource TextPrimary}" FontSize="13"/>
                 </ScrollViewer>
 
-                <Border Grid.Row="2" Background="#141622" CornerRadius="0,0,16,16" Padding="20,15">
+                <Border Grid.Row="2" Background="#0F1B33" CornerRadius="0,0,16,16" Padding="20,15">
                     <Grid>
                         <Grid x:Name="ActionPanel">
                             <Grid.ColumnDefinitions>
@@ -94,7 +94,7 @@
                                     <TextBlock x:Name="PercentText" Foreground="{StaticResource AccentBrush}"
                                                FontSize="12" FontWeight="Bold" HorizontalAlignment="Right"/>
                                 </Grid>
-                                <ProgressBar x:Name="ProgressBar" Height="6" Maximum="100" Background="#2D2F45" BorderThickness="0"/>
+                                <ProgressBar x:Name="ProgressBar" Height="6" Maximum="100" Background="#1F3457" BorderThickness="0"/>
                             </StackPanel>
                         </Grid>
                     </Grid>
